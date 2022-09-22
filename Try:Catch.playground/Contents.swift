@@ -2,32 +2,45 @@ import UIKit
 import Darwin
  
 struct Dish {
+    ///блюдо
     let product: Product
+    ///количество
     var count: Int
+    /// способ приготовления
     var coocked: CookingMethod
+    //сколько тарелок нужно для сервировки
     var platesNeed: Int
     
 }
  
 struct Product {
+    ///наименование продукта
     let name: String
 }
  
 enum CookingMethod {
+    ///свежий
     case fresh
+    ///вареный
     case boiled
+    ///жареный
     case fried
 }
  
 enum KitchenError: Error {
-    case invalidSelection // блюда нет в меню
-    case outOfStock       //нет в наличии
-    case insufficientPlate(platesNeed: Int) //недостаточно чистых тарелок, передаем недостаточное количество
-    case invalidCookingMethod //не правильный способ приготовления
+    /// блюда нет в меню
+    case invalidSelection
+    ///нет в наличии
+    case outOfStock
+    ///недостаточно чистых тарелок, передаем недостаточное количество
+    case insufficientPlate(platesNeed: Int)
+    ///не правильный способ приготовления
+    case invalidCookingMethod
 }
  
 enum EatError: Error {
-    case personNotFound // человек не найден
+    /// человек не найден
+    case personNotFound
 }
  
 let favouriteFood = [
@@ -84,7 +97,6 @@ let kitchen = Kitchen()
  
  
 do {
-    //let cook1 = try kitchen.makeFood(foodName: "Eggs", coocked: .fresh)
     //let take = try takeFavouriteFood(person: "father", kitchen: kitchen, coocked: .boiled)
     //let take = try takeFavouriteFood(person: "mother", kitchen: kitchen, coocked: .boiled)
     let take = try takeFavouriteFood(person: "son", kitchen: kitchen, coocked: .boiled)
@@ -103,3 +115,4 @@ do {
 } catch let error {
     print(error.localizedDescription)
 }
+
